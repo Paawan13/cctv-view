@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CCTV Viewer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #video-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 90%;
+            height: 400px;
+            
+        }
+        #video {
+            max-width: 65%; /* Adjust the width as needed */
+        }
+        #record{
+            display: flex;
+            align-content: right;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>CCTV Viewer</h1>
+    <div id="video-container">
+        <img id="video"  src="{{url_for('sales_vid')}}" >
+        
+    </div>
+
+    <div id="sidebar" style=" width: 20%; border: 1px solid #080808; position:absolute;
+    border-radius: 5px; justify-content: center; align-items: top; justify-items: left;">
+      <h2>Last Week's Footage</h2>
+
+    <form method="POST" action='{{url_for("ai")}}'>
+
+        <button type="submit" class =  "btn btn-primary btn-lg" name="button"  style="padding: 5px;" value="AI">AI Team</button>
+        </form>
+        <form method = "POST" action = '{{url_for("sales")}}'>
+        <button type="submit"  class =  "btn btn-primary btn-lg" name="button"  style="padding: 5px;" value="Sales">Sales Team</button>
+    </form>
+    <form method="POST" action='{{url_for("presales")}}'>
+        <button type="submit"  class =  "btn btn-primary btn-lg" name="button"  style="padding: 5px;" value="Presales">Pre Sales Team</button>
+        </form>
+          
+    </div>
+
+    <div id = "record">
+      <button type="button" class="btn btn-primary btn-lg">Record</button>
+    </div>
+</body>
+</html>
